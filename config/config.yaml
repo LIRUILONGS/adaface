@@ -1,0 +1,16 @@
+
+
+adaface:
+  zero:
+    # 预训练模型
+    model: ir_101
+    # 预训练模型名字
+    model_file: pretrained/adaface_ir101_webface12m.ckpt
+
+
+
+
+## flask 配置
+flask:
+  port: 30035
+  token: eyJhbGciOiJSUzI1NiIsImtpZCI6ImF2MmJV

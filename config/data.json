@@ -1,0 +1,106 @@
+/* 
+classrooms_name: 班级名字
+zone_name: 区域名字
+ip_list：区域摄像头 IP 集合
+image: 区域原始图： 2560*1440
+image_c_1： 人脸小图： 112*112
+iamge_c_2： 人脸中图： 160*180
+iamge_c_3： 区域全图(轮播用):  2560*1440
+*/
+{
+    "classrooms_name": "classrooms_1",
+    "zone": [
+        {
+            "zone_name": "classrooms_1_zone_1",
+            "ip_list": {
+                "192.168.1.185": {
+                    "image": "./192.168.1.191/192.168.1.191_01_19700101195222414_TIMING.jpg",
+                    "image_c_1":{},
+                    "iamge_c_2":{} ,
+                    "iamge_c_3": [
+                        "./192.168.1.191/192.168.1.191_dc.jpg",
+                        "./192.168.1.191/192.168.1.191_yc.jpg",
+                        "./192.168.1.191/192.168.1.191_yp.jpg"
+                    ]
+                },
+                "192.168.1.186": {
+                    "image": "./192.168.1.191/demo_image.jpg",
+                    "image_c_1": [],
+                    "iamge_c_2": [],
+                    "iamge_c_3": []
+                },
+                "192.168.1.188": {
+                    "image": "./demo_image.jpg",
+                    "image_c_1": [],
+                    "iamge_c_2": [],
+                    "iamge_c_3": []
+                },
+                "192.168.1.189": {
+                    "image": "./demo_image.jpg",
+                    "image_c_1": [],
+                    "iamge_c_2": [],
+                    "iamge_c_3": []
+                }
+            }
+        },
+        {
+            "zone_name": "classrooms_1_zone_2",
+            "ip_list": {
+                "192.168.1.185": {
+                    "image": "./demo_image.jpg",
+                    "image_c_1": [],
+                    "iamge_c_2": [],
+                    "iamge_c_3": []
+                },
+                "192.168.1.186": {
+                    "image": "./demo_image.jpg",
+                    "image_c_1": [],
+                    "iamge_c_2": [],
+                    "iamge_c_3": []
+                },
+                "192.168.1.188": {
+                    "image": "./demo_image.jpg",
+                    "image_c_1": [],
+                    "iamge_c_2": [],
+                    "iamge_c_3": []
+                },
+                "192.168.1.189": {
+                    "image": "./demo_image.jpg",
+                    "image_c_1": [],
+                    "iamge_c_2": [],
+                    "iamge_c_3": []
+                }
+            }
+        },
+        {
+            "zone_name": "classrooms_1_zone_3",
+            "ip_list": {
+                "192.168.1.185": {
+                    "image": "./demo_image.jpg",
+                    "image_c_1": [],
+                    "iamge_c_2": [],
+                    "iamge_c_3": []
+                },
+                "192.168.1.186": {
+                    "image": "./demo_image.jpg",
+                    "image_c_1": [],
+                    "iamge_c_2": [],
+                    "iamge_c_3": []
+                },
+                "192.168.1.188": {
+                    "image": "./demo_image.jpg",
+                    "image_c_1": [],
+                    "iamge_c_2": [],
+                    "iamge_c_3": []
+                },
+                "192.168.1.189": {
+                    "image": "./demo_image.jpg",
+                    "image_c_1": [],
+                    "iamge_c_2": [],
+                    "iamge_c_3": []
+                }
+            }
+        }
+    ]
+}
+
