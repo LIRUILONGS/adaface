@@ -79,7 +79,8 @@ class AdaFaceFeature:
         try:
             np_img = np.array(pil_rgb_image)
             brg_img = ((np_img[:, :, ::-1] / 255.) - 0.5) / 0.5
-            tensor = torch.tensor([brg_img.transpose(2, 0,1)]).float()
+            #tensor = torch.tensor([brg_img.transpose(2, 0,1)]).float()
+            tensor = torch.tensor(np.array([brg_img.transpose(2, 0,1)])).float()
         except Exception :
             return tensor    
         return tensor
@@ -135,9 +136,6 @@ class AdaFaceFeature:
         import torch.nn.functional as F
         return F.cosine_similarity(source_representation, test_representation)
     
-
-
-
 
 if __name__ == '__main__':
     print("获取特征开始")
