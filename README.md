@@ -36,9 +36,11 @@
 
 ```bash
 conda env create -f /environment.yml
-source activate mtcnn
+source activate AdaFace
 pip install -r /requirements.txt  -i  https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+
+需要的预训练模型文件下载可以在作者的 github 项目主页找
 
 使用方式
 
@@ -89,7 +91,7 @@ curl --location --request POST 'http://192.168.26.81:30035/b64_represent_json' \
 
 打包了 Docker 镜像，可以直接使用
 
-镜像地址： [https://hub.docker.com/repository/docker/liruilong/adaface-face/general](https://hub.docker.com/repository/docker/liruilong/adaface-face/general)
+镜像地址： [https://hub.docker.com/r/liruilong/adaface-face](https://hub.docker.com/r/liruilong/adaface-face)
 
 ```bash
 docker pull liruilong/adaface-face
