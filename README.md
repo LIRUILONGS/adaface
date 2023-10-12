@@ -31,6 +31,8 @@
 
 [https://github.com/mk-minchul/AdaFace](https://github.com/mk-minchul/AdaFace)
 
+### 当前项目简单介绍
+
 当前项目做了简化，只提供 输出人脸特征向量的 能力
 
 特别说明，输入图片不管是 字节还是,b64 编码，需要符合 照片为单个人脸照片，做面部对齐处理(不是必须，可能会影响)，大小： 112*112
