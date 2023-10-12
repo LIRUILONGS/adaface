@@ -51,6 +51,13 @@ pip install -r /requirements.txt  -i  https://pypi.tuna.tsinghua.edu.cn/simple
 ```bash
 python AdaFaceFeature.py
 ```
+```bash
+PS W:\AdaFace_demo>  w:; cd 'w:\AdaFace_demo'; & 'C:\Users\liruilong\AppData\Local\conda\conda\envs\AdaFace\python.exe' 'c:\Users\liruilong\.vscode\extensions\ms-python.python-2023.18.0\pythonFiles\lib\python\debugpy\adapter/../..\debugpy\launcher' '54612' '--' 'w:\AdaFace_demo\AdaFaceFeature.py'
+获取特征开始
+w:\AdaFace_demo\AdaFaceFeature.py:82: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\torch\csrc\utils\tensor_new.cpp:248.)
+  tensor = torch.tensor([brg_img.transpose(2, 0,1)]).float()
+[[0.04365507885813713, -0.02032642811536789, -0.011309171095490456, ......................-0.002891642739996314, -0.00423774728551507, -0.08181970566511154, 0....
+```
 
 + 提供了 字节，b64 编码 图片处理
 + 支持输出特征向量方式为 字节和JSON
