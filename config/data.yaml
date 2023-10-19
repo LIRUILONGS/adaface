@@ -1,0 +1,89 @@
+building:
+  - building_name: "A座"
+    building_multistory:
+      - floor_name: "2F"
+        classrooms:
+          - classrooms_name : "5号教室"
+            zone: 
+              - zone_name": "5号教室 区域1"
+                ip_info:
+                  - ip: "192.168.2.137"
+                    ip_desc: "A座-2F仓库"
+                  - ip: "192.168.2.138"
+                    ip_desc: "A座-2F仓库"
+              - zone_name": "5号教室 区域2"
+                ip_info:
+                  - ip: "192.168.2.137"
+                    ip_desc: "A座-2F仓库"
+                  - ip: "192.168.2.138"
+                    ip_desc: "A座-2F仓库" 
+          - classrooms_name : "6号教室"
+            zone: 
+              - zone_name": "6号教室 区域1"
+                ip_info:
+                  - ip: "192.168.2.137"
+                    ip_desc: "A座-2F仓库"
+                  - ip: "192.168.2.138"
+                    ip_desc: "A座-2F仓库"
+              - zone_name": "5号教室 区域2"
+                ip_info:
+                  - ip: "192.168.2.137"
+                    ip_desc: "A座-2F仓库"
+                  - ip: "192.168.2.138"
+                    ip_desc: "A座-2F仓库"
+      - floor_name: "3F"
+        classrooms:
+          - classrooms_name : "1号教室"
+            zone: 
+              - zone_name": "1号教室 区域1"
+                ip_info:
+                  - ip: "192.168.2.137"
+                    ip_desc: "A座-2F仓库"
+                  - ip: "192.168.2.138"
+                    ip_desc: "A座-2F仓库"
+  - building_name: "A座"
+    building_multistory:
+      - floor_name: "2F"
+        classrooms:
+          - classrooms_name : "5号教室"
+            zone: 
+              - zone_name": "5号教室 区域1"
+                ip_info:
+                  - ip: "192.168.2.137"
+                    ip_desc: "A座-2F仓库"
+                  - ip: "192.168.2.138"
+                    ip_desc: "A座-2F仓库"
+              - zone_name": "5号教室 区域2"
+                ip_info:
+                  - ip: "192.168.2.137"
+                    ip_desc: "A座-2F仓库"
+                  - ip: "192.168.2.138"
+                    ip_desc: "A座-2F仓库" 
+          - classrooms_name : "6号教室"
+            zone: 
+              - zone_name": "6号教室 区域1"
+                ip_info:
+                  - ip: "192.168.2.137"
+                    ip_desc: "A座-2F仓库"
+                  - ip: "192.168.2.138"
+                    ip_desc: "A座-2F仓库"
+              - zone_name": "5号教室 区域2"
+                ip_info:
+                  - ip: "192.168.2.137"
+                    ip_desc: "A座-2F仓库"
+                  - ip: "192.168.2.138"
+                    ip_desc: "A座-2F仓库"
+      - floor_name: "3F"
+        
+        
+        
+      :
+          - classrooms_name : "1号教室"
+            zone: 
+              - zone_name": "1号教室 区域1"
+                ip_info:
+                  - ip: "192.168.2.137"
+                    ip_desc: "A座-2F仓库"
+                  - ip: "192.168.2.138"
+                    ip_desc: "A座-2F仓库"     
+

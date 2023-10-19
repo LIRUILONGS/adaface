@@ -655,6 +655,17 @@ def feature2byte(feature):
     
     return pickle.dumps(feature)
     
+def feature2json_str(feature):
+    """
+    @Time    :   2023/10/10 23:57:10
+    @Author  :   liruilonger@gmail.com
+    @Version :   1.0
+    @Desc    :   向量转 JSON 字符串
+    """
+    feature_np = feature.detach().cpu().numpy()
+    feature_list = feature_np.tolist()
+    return json.dumps(feature_list)
+
 def feature2json(feature):
     """
     @Time    :   2023/10/10 23:57:10
@@ -664,9 +675,7 @@ def feature2json(feature):
     """
     feature_np = feature.detach().cpu().numpy()
     feature_list = feature_np.tolist()
-    return json.dumps(feature_list)
-
-
+    return json.loads(json.dumps(feature_list))
 
 def variance_of_laplacian(image):
     """

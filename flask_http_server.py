@@ -29,7 +29,8 @@ import yaml_utils as Yaml
 
 app = Flask(__name__)  # 实例化并命名为app实例
 
-face_log = logging.basicConfig(level=logging.INFO, )
+logging.basicConfig(level=logging.INFO)
+logging.getLogger("PIL.PngImagePlugin").setLevel(logging.WARNING)
 
 config = Yaml.get_yaml_config(file_name="config/config.yaml")
 flask_config = config['flask']
@@ -132,9 +133,44 @@ def readyz():
         return {'result': " ready ^_^ "} 
     else:
         abort(503, "Service Unavailable")
+
+
+@app.route("/face_mtcnn_represent", methods=["POST"])
+@token_required
+def face_mtcnn_represent():
+    """
+    @Time    :   2023/10/17 07:54:14
+    @Author  :   liruilonger@gmail.com
+    @Version :   1.0
+    @Desc    :   解析 mtcnn 返回的  face 数据
+    """
+    faces = request.json
+    if faces is not None and faces['face_efficient_total_resp'] != 0:
+        resp = faces['resp']
+        for face in resp:
+            logging.info(face['face_id'])
+            face_b64 = face['face_align_images_b64']
+            try:
+                context = current_app.my_context
+                feature =  context.adaface.b64_get_represent(face_b64)
+                if feature  is not None:
+                    face['face_vetor'] = utils.feature2json(feature)
+         
+            except Exception as exc:
+                logging.info(f"adaface 获取人脸信息 调用异常：{exc}")
+                return {"status": 400, "message": f"mtcnn 获取人脸信息 调用异常：{exc}"}
+        
+        return {"status": 200, "message": "提取人脸特征向量成功", "data": faces}
+    else:
+        return {"status": 400, "message": f"{faces['image_id']} 没有符合特征提取条件的人脸","data":faces }
+
+
     
 
+
+
 @app.route("/b64_represent_byte", methods=["POST"])
+@token_required
 def b64representBYTE():
     """
     @Time    :   2023/10/11 07:29:16
@@ -156,6 +192,7 @@ def b64representBYTE():
     
 
 @app.route("/b64_represent_json", methods=["POST"])
+@token_required
 def b64representJSON():
     """
     @Time    :   2023/09/17 22:46:20
@@ -168,7 +205,7 @@ def b64representJSON():
         context = current_app.my_context
         feature =  context.adaface.b64_get_represent(base64_data)
         if feature  is not None:
-            return Response(utils.feature2json(feature), content_type='application/json')
+            return Response(utils.feature2json_str(feature), content_type='application/json')
         else:
             abort(400, "feature fail")
     else:
@@ -176,6 +213,7 @@ def b64representJSON():
 
 
 @app.route("/byte_represent_byte", methods=["POST"])
+@token_required
 def byterepresentBYTE():
     """
     @Time    :   2023/10/11 07:29:16
@@ -197,6 +235,7 @@ def byterepresentBYTE():
     
 
 @app.route("/byte_represent_json", methods=["POST"])
+@token_required
 def byterepresentJSON():
     """
     @Time    :   2023/09/17 22:46:20
@@ -209,7 +248,7 @@ def byterepresentJSON():
         context = current_app.my_context
         feature =  context.adaface.byte_get_represent(base64_data)
         if feature  is not None:
-            return Response(utils.feature2json(feature), content_type='application/json')
+            return Response(utils.feature2json_str(feature), content_type='application/json')
         else:
             abort(400, "feature fail")
     else:
@@ -218,5 +257,5 @@ def byterepresentJSON():
 
 if __name__ == "__main__":
     
-    app.run(port=flask_config['port'], host="0.0.0.0", debug=True)  # 调用run方法，设定端口号，启动服务
+    app.run(port=flask_config['port'], host="0.0.0.0")  # 调用run方法，设定端口号，启动服务
 
