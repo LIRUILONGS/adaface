@@ -6,9 +6,9 @@ metadata:
   labels:
     job-name: face-adaface-job
 spec:
-  parallelism: 20
-  completions: 20
-  backoffLimit: 6
+  parallelism: 10
+  completions: 10
+  backoffLimit: 2
   template:
     metadata:
       name: face-adaface-job
