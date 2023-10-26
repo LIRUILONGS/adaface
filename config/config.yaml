@@ -9,9 +9,14 @@ adaface:
 
 
 
-
-## flask 配置
-flask:
-  port: 30035
-  token: eyJhbGciOiJSUzI1NiIsImtpZCI6ImF2MmJV
+queue:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    database: 1 
+  single_face_queue_key: "A_205_Face"
+  single_adaface_queue_key: "A_205_Adaface"
+  # 队列阻塞时间，超过这个是按
+  timeout: 300    
 
