@@ -6,8 +6,8 @@ metadata:
   labels:
     job-name: face-adaface-job
 spec:
-  parallelism: 10
-  completions: 10
+  parallelism: 20
+  completions: 20
   backoffLimit: 2
   template:
     metadata:
@@ -28,14 +28,14 @@ spec:
             limits:
               memory: 9Gi
             requests:
-              cpu: '10'
+              cpu: '5'
               memory: 5Gi 
           volumeMounts:
             - name: config
               mountPath: /face/config
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
       restartPolicy: Never
       terminationGracePeriodSeconds: 0
 status: {}

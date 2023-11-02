@@ -45,11 +45,12 @@ def install_redis_vector(rc,face_data,file_name):
     @Version :   1.0
     @Desc    :   数据入表
     """
+    logging.info("||=======||当前处理的图片ID：{}".format(face_data['image_id']))
     image_id = face_data['image_id']
     image_key = file_name
     class_code_account_period = "A0205_1" # 前端传过来
     face_key = class_code_account_period
-    logging.info("当前处理的照片为：{}".format(file_name))
+    logging.info("当前处理的图片名字：{}".format(file_name))
     pipe = rc.pipeline()
     for face in face_data['resp']:
         try:
@@ -94,7 +95,8 @@ def face_mtcnn_represent(faces):
         logging.info("提取人脸特征成功!!!")
         return faces
     else:
-        logging.info(f"{faces['image_id']} 没有符合特征提取条件的人脸")
+        logging.info(f"{faces['image_id']} 没有符合特征提取条件的人脸 face_efficient_total_resp :{ faces['face_efficient_total_resp'] }")
+        return None
         
 
 
@@ -104,7 +106,13 @@ def face_mtcnn_represent(faces):
 if __name__ == "__main__":
     adaface_key = queue_config['single_adaface_queue_key']
     face_key = queue_config['single_face_queue_key']
-    rc = RedisClient()
+    while True:
+        try:
+            rc = RedisClient()
+            break
+        except:
+            logging.info("redis 重连中....") 
+            pass    
     logging.info("redis 建立连接成功 ！！！{},{}".format(adaface_key,face_key))
     while True:
         #try:
@@ -114,9 +122,10 @@ if __name__ == "__main__":
                 _ , face_data = data
                 image_data =  pickle.loads(face_data)
                 image_face = face_mtcnn_represent(image_data)
-                logging.info("提取人脸信息，放入队列：  {}".format(adaface_key))
+                if image_face is not None:
+                    logging.info("提取人脸信息，放入队列：  {}".format(adaface_key))
                 #face_data = pickle.dumps(image_face)
-                install_redis_vector(rc,image_face,image_data['face_file_name'])
+                    install_redis_vector(rc,image_face,image_data['face_file_name'])
                 
             else:
                 logging.info("队列中暂时没有元素，结束等待 ^_^ ")
@@ -128,4 +137,5 @@ if __name__ == "__main__":
 
 
     
+
 
